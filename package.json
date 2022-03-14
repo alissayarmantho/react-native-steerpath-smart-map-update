@@ -1,0 +1,40 @@
+{
+  "name": "react-native-steerpath-smart-map-update",
+  "title": "React Native Steerpath Smart Map Update",
+  "version": "1.0.1",
+  "description": "Steerpath SmartMapView for React Native",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nayookyaw/react-native-steerpath-smart-map-update.git",
+    "baseUrl": "https://github.com/nayookyaw/react-native-steerpath-smart-map-update.git"
+  },
+  "keywords": [
+    "react-native"
+  ],
+  "author": {
+    "name": "Nay Oo Kyaw",
+    "email": "nayookyaw.nok@gmail.com"
+  },
+  "license": "MIT",
+  "licenseFilename": "LICENSE",
+  "readmeFilename": "README.md",
+  "dependencies": {
+    "steerpath-smart-sdk": "^2.0.2"
+  },
+  "peerDependencies": {
+    "react": "^16.5.0",
+    "react-native": ">=0.57.0-rc.0 <1.0.x"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.35",
+    "@types/react-native": "^0.62.12",
+    "react": "^16.9.0",
+    "react-native": "^0.60.5",
+    "typescript": "^3.9.3"
+  }
+}
