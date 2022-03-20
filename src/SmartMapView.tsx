@@ -356,6 +356,17 @@ export const SmartMapView = forwardRef<SmartMapViewMethods, SmartMapViewProps>(
           onSearchCategorySelected={(event) => {
             props.onSearchCategorySelected?.(event.nativeEvent);
           }}
+
+          // Added by Nay Oo Kyaw
+          onLiveObjectAppeared={(event) => {
+            props.onLiveObjectAppeared?.(event.nativeEvent);
+          }}
+          onLiveObjectDisappeared={(event) => {
+            props.onLiveObjectDisappeared?.(event.nativeEvent);
+          }}
+          onLiveObjectUpdated={(event) => {
+            props.onLiveObjectUpdated?.(event.nativeEvent);
+          }}
         />
       </View>
     );

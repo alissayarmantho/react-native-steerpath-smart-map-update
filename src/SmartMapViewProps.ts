@@ -231,6 +231,18 @@ export interface SmartViewNativeProps {
     floorIndex: number;
     buildingRef?: string;
   }) => void;
+
+  // Added by Nay Oo Kyaw
+  onLiveObjectAppeared?: (payload: {
+    identifier?: string;
+  }) => void;
+  onLiveObjectDisappeared?: (payload: {
+    identifier?: string;
+  }) => void;
+  onLiveObjectUpdated?: (payload: {
+    identifier?: string,
+    status?: string
+  }) => void;
 }
 
 export interface SmartMapViewProps

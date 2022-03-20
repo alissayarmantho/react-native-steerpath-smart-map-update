@@ -10,6 +10,11 @@ public class RNEventKeys {
     public static final String SEARCH_RESULT_SELECTED = "onSearchResultSelected";
     public static final String SEARCH_CATEGORY_SELECTED = "onSearchCategorySelected";
 
+    // Live EVENTS
+    public static final String ON_LIVE_OBJECT_APPEARED = "onLiveObjectAppeared";
+    public static final String ON_LIVE_OBJECT_DISAPPEARED = "onLiveObjectDisappeared";
+    public static final String ON_LIVE_OBJECT_UPDATED = "onLiveObjectUpdated";
+
     // USER TASK
     public static final String USER_TASK_RESPONSE = "onUserTaskResponse";
 
