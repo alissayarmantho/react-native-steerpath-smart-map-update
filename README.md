@@ -9,8 +9,7 @@ or
 `$ yarn add react-native-steerpath-smart-map-update`
 
 # Updated Functions
-- Add new listener for react-native that doesn't has in origin sdk
-- Now can get the 'LiveObjectListener' in react-native
+- Add new listener for react-native
 - New functions 
   1. onLiveObjectAppeared
   2. onLiveObjectDisappeared
