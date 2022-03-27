@@ -13,15 +13,15 @@ export default class Drawer extends Component {
     super(props);
     this.liveEnabled = false;
     let floorIndex = 2;
-    this.buildingRef = "431";
+    this.buildingRef = "250";
     this.hasListener = false;
     this.markerMapObject = {
-      latitude: 60.22094105045167,
-      longitude: 24.812373965978622,
-      floorIndex: floorIndex,
-      localRef: "custom_marker_local_ref",
+      latitude: 1.2969269827,
+      longitude: 103.7702747166,
+      floorIndex: 2,
+      localRef: "EXHIBTION SPACE",
       buildingRef: this.buildingRef,
-      title: "Custom Marker",
+      title: "NOK",
       properties: {
         foo: "bar",
       },
@@ -73,6 +73,7 @@ export default class Drawer extends Component {
       ],
     };
     this.handleGeofenceEntered = this.handleGeofenceEntered.bind(this);
+    this.addGeofence = this.addGeofence.bind(this);
     this.state = {
       smartSDKVersion: "",
       mapboxSDKVersion: "",
@@ -172,7 +173,7 @@ export default class Drawer extends Component {
     );
   };
 
-  getMapObject = (source) => {
+  getMapObject = (source="MARKER") => {
     let localRef = "";
     switch (source) {
       case "STATIC":
@@ -185,7 +186,7 @@ export default class Drawer extends Component {
         );
         break;
       case "MARKER":
-        localRef = "custom_marker_local_ref";
+        localRef = "EXHIBTION SPACE";
         this.props.smartMapRef.current.getMapObject(
           localRef,
           this.buildingRef,
@@ -354,18 +355,22 @@ export default class Drawer extends Component {
   }
 
   addGeofence() {
-    let localRef = "R&D";
+    // let localRef = "SMOKE STOP LOBBY 1";
+    let localRef = "traffic_control";
+    let buildingRef = "250";
+    console.log (this.hasListener)
     if (this.hasListener === false) {
       SmartGeofenceManager.addListener(this.handleGeofenceEntered);
       this.hasListener = true;
+      console.log ("geofence listened!");
     }
-    SmartGeofenceManager.addGeofence(localRef, this.buildingRef, (response) => {
+    SmartGeofenceManager.addGeofence(localRef, buildingRef, (response) => {
       console.log("response ", response);
     });
   }
 
   handleGeofenceEntered(status) {
-    console.log("handleGeofenceEntered ", status);
+    console.log("handleGeofenceEntered>>>> ", status);
   }
 
   setWidgetPadding = () => {
@@ -390,16 +395,16 @@ export default class Drawer extends Component {
           "type":"Feature",
           "geometry": {
             "type":"Point",
-            "coordinates":[24.8124114,60.2209866]
+            "coordinates":[1.2969269827,103.7702747166]
           },
           "properties":{
             "iconImage":"category_marker",
             "title":"Mobile development",
             "css_class":"",
-            "localRef":"Mobile development",
+            "localRef":"EXHIBTION SPACE",
             "layerIndex":2,
-            "buildingRef":"431",
-            "id":""
+            "buildingRef":"250",
+            "id":"3422"
           }
         }
       ]

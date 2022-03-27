@@ -33,6 +33,9 @@ import com.steerpath.smart.listeners.NavigationEventListener;
 import com.steerpath.smart.listeners.UserTaskListener;
 import com.steerpath.smart.listeners.ViewStatusListener;
 
+// Added by Nay Oo Kyaw
+import com.steerpath.smart.listeners.LiveObjectListener;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -58,8 +61,13 @@ import static com.steerpath.rnsmartmap.RNEventKeys.VIEW_STATUS_CHANGED;
 import static com.steerpath.rnsmartmap.RNEventKeys.VISIBLE_FLOOR_CHANGED;
 import static com.steerpath.rnsmartmap.Utils.convertJsonToWritableMap;
 
+// Added by Nay Oo Kyaw
+import static com.steerpath.rnsmartmap.RNEventKeys.ON_LIVE_OBJECT_APPEARED;
+import static com.steerpath.rnsmartmap.RNEventKeys.ON_LIVE_OBJECT_DISAPPEARED;
+import static com.steerpath.rnsmartmap.RNEventKeys.ON_LIVE_OBJECT_UPDATED;
+
 public class RNSmartMapView extends FrameLayout
-        implements MapEventListener, UserTaskListener, NavigationEventListener, ViewStatusListener {
+        implements MapEventListener, UserTaskListener, NavigationEventListener, ViewStatusListener, LiveObjectListener {
 
     private SmartMapFragment smartMap;
     private ReactContext reactContext;
@@ -79,6 +87,7 @@ public class RNSmartMapView extends FrameLayout
         smartMap.setNavigationEventListener(this);
         smartMap.setUserTaskListener(this);
         smartMap.setViewStatusListener(this);
+        smartMap.setLiveObjectListener(this);
 
         OnBackPressedCallback onBackPressedCallback = new OnBackPressedCallback(true) {
             @Override
@@ -119,6 +128,35 @@ public class RNSmartMapView extends FrameLayout
 
     SmartMapFragment getMap() {
         return smartMap;
+    }
+
+    /**
+        * - - - - - Live Object EVENTS - - - - -
+        Added by Nay Oo Kyaw
+    */
+    @Override
+    public void onLiveObjectAppeared(String identifier) {
+        WritableMap map = new WritableNativeMap();
+        map.putString("identifier", identifier);
+
+        manager.sendEvent(reactContext, this, ON_LIVE_OBJECT_APPEARED, map);
+    }
+
+    @Override
+    public void onLiveObjectDisappeared(String identifier) {
+        WritableMap map = new WritableNativeMap();
+        map.putString("identifier", identifier);
+
+        manager.sendEvent(reactContext, this, ON_LIVE_OBJECT_DISAPPEARED, map);
+    }
+
+    @Override
+    public void onLiveObjectUpdated(String identifier, String[] inGeofences, String status) {
+        WritableMap map = new WritableNativeMap();
+        map.putString("identifier", identifier);
+        map.putString("status", status);
+
+        manager.sendEvent(reactContext, this, ON_LIVE_OBJECT_UPDATED, map);
     }
 
     /**

@@ -4,7 +4,10 @@ import RNFS from "react-native-fs";
 import Drawer from "./Drawer.js";
 import { BackHandler, View } from "react-native";
 import { CONFIG_STRING } from "./config.js";
-import { Layout, LiveConfig, SmartBottomSheetState, SmartMapManager, SmartMapMode, SmartMapNavigationUserTask, SmartMapObject, SmartMapUserTask, SmartMapUserTaskResponse, SmartMapUserTaskType, SmartMapView, SmartMapViewMethods, SmartMapViewStatus } from "react-native-steerpath-smart-map";
+import { Layout, LiveConfig, SmartBottomSheetState, SmartMapManager, SmartMapMode, 
+  SmartMapNavigationUserTask, SmartMapObject, SmartMapUserTask, SmartMapUserTaskResponse, 
+  SmartMapUserTaskType, SmartMapView, SmartMapViewMethods, SmartMapViewStatus } 
+  from "react-native-steerpath-smart-map";
 
 const CONFIG_FILE_PATH = RNFS.DocumentDirectoryPath + "/steerpath_config.json";
 
@@ -114,6 +117,15 @@ export default function App() {
                 smartMapRef.current?.selectMapObject(smartmapObject);
               }       
             }}
+
+            // onLiveObjectAppeared={(payload) => {
+            //   console.log ("On Live Object Appeared ", payload);
+            // }}
+
+            // onLiveObjectUpdated={(payload) => {
+            //   console.log ("On Live Object Updated", payload);
+            // }}
+            
             onUserFloorChanged={(payload) =>
               console.log("User floor changed", payload)
             }
