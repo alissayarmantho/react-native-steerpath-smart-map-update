@@ -10,6 +10,8 @@ import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.bridge.WritableNativeMap;
+import com.steerpath.smart.NavigationUserTask;
+import com.steerpath.smart.SmartMapObject;
 import com.steerpath.smart.SmartSDK;
 
 import org.json.JSONException;
@@ -38,6 +40,13 @@ public class RNSmartMapManager extends ReactContextBaseJavaModule {
     public void start(String apiKey) {
         Log.d("RNSmartMapManager", "start");
         appContext.runOnUiQueueThread(() -> SmartSDK.getInstance().start(appContext, apiKey));
+    }
+
+    @ReactMethod
+    public SmartMapObject getUserLocation() {
+        return new NavigationUserTask(new SmartMapObject(1.2969269827,
+                103.7702747166, 2, "EXHIBTION SPACE", "250")).
+                getOrigin();
     }
 
     @ReactMethod

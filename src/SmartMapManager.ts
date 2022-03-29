@@ -1,5 +1,6 @@
 /* eslint-disable prefer-destructuring */
 import { NativeModules, Platform } from "react-native";
+import { SmartMapObject } from "./SmartMapViewProps";
 
 const RNSmartMapManager = NativeModules.RNSmartMapManager;
 
@@ -33,6 +34,9 @@ export interface LiveConfig {
 }
 
 export const SmartMapManager = {
+  getUserLocation(): SmartMapObject {
+    return RNSmartMapManager.getUserLocation();
+  },
   start(apiKey: string): void {
     RNSmartMapManager.start(apiKey);
   },
@@ -62,5 +66,5 @@ export const SmartMapManager = {
   },
   setLanguage(languageCode: String): void {
     RNSmartMapManager.setLanguage(languageCode);
-  }
+  },
 };
